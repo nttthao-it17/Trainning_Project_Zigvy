@@ -1,0 +1,88 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+h1{
+  text-align: center;
+} 
+
+/* Login Form */
+.body-login-form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ant-input-affix-wrapper{
+  border: 2px solid black;
+  margin-bottom: 20px;
+  width: 250px;
+  display: flex;
+}
+
+.ant-input-affix-wrapper-focused{
+  border: 2px solid rgb(39, 176, 255);
+}
+
+.ant-input{
+  border-width: 0;
+  width: 100%;
+}
+
+.ant-input:focus{
+  outline: none;
+}
+
+.ant-form-item{
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-button{
+  width: 80px;
+  height: 25px;
+  background-color: rgb(122, 202, 248);
+  border: 2px solid #000;
+}
+
+.login-form-button:hover{
+  background-color: rgb(84, 190, 252);
+}
+
+/* ListForm */
+.main-layout{
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  text-align: right;
+}
+
+/* App Router */
+a{
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  color: brown;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+
+}
+
+a:hover{
+  background-color: darkgray;
+  color: #000;
+}
+
+/* a:active{
+  border-bottom: 2px solid #000;
+} */
+
+.router-body{
+  display: flex;
+}
+
