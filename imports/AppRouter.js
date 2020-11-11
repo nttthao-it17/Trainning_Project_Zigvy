@@ -38,9 +38,7 @@ export default () =>{
                 
                 <Switch>
                     <Route exact path="/app">
-                        <div className="secondpage">
-                            <HomePage />
-                        </div>
+                        <HomePage />
                     </Route>
                     <Route exact path="/app/info">
                         <MyInfoPage />

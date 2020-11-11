@@ -1,19 +1,20 @@
-const { MongoObject } = require("simpl-schema");
-
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
-UsersCollection = new Mongo.Collection('usersCollection');
+UsersCollection = new Mongo.Collection();
 //schema attach to Collection
 UsersCollection.schema = new SimpleSchema({
     username: String,
     profile : Object,
-        'fullname': String,
-        'email': String,
-        'phone': Number,
-        'userRole': {type: Boolean, defaultValue: false},
+        'profile.fullname': String,
+        'profile.phone': String,
+        'profile.userRole': String,
+    email: String,
     services: {
         type: Object,
         blackbox: true
     }
 })
+const userSchema = UsersCollection.schema;
+
+export default UsersCollection;

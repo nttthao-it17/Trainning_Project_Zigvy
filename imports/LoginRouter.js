@@ -3,6 +3,7 @@ import {BrowserRouter as Router,Redirect,Route, Switch} from "react-router-dom";
 
 import LoginForm from "./ui/LoginForm";
 import AppRouter from "./AppRouter";
+import RegistrationForm from './ui/RegistrationForm';
 
 export default () => {
     return(
@@ -10,6 +11,9 @@ export default () => {
             <Switch>
                 <Route exact path="/login">
                    <LoginForm />
+                </Route>
+                <Route exact path='/register'>
+                    <RegistrationForm/>
                 </Route>
                 <Route path="/app">
                     <AppRouter/>

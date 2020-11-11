@@ -1,14 +1,13 @@
 import React from 'react';
 import LoginRouter from "../LoginRouter";
-import UserIDPage from "./UserIDPage";
+import RegistrationForm from './RegistrationForm';
 
 export const App = () => {
-  // const user = useTracker(() => Meteor.user()); 
 
   return(
   <div className="container-app">
     <LoginRouter/>
-    {/* <UserIDPage /> */}
+    {/* <RegistrationForm/> */}
   </div>
   );
 };

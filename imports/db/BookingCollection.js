@@ -1,7 +1,7 @@
 import {Mongo} from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
-BookingCollection = new Mongo.Collection('booking');
+BookingCollection = new Mongo.Collection();
 
 BookingCollection.schema = new SimpleSchema({
     dateTime: new Date(),
@@ -10,3 +10,4 @@ BookingCollection.schema = new SimpleSchema({
     timeBin: Array,
     openMatch: {type: Boolean, defaultValue: false}
 })
+export default BookingCollection;

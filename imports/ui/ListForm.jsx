@@ -14,7 +14,6 @@ const renderComponent = (route) =>{
 }
 
 export const ListForm = () => {
-    // const route = 
     const user = useTracker(() => Meteor.user()); 
     const history = useHistory();
 
@@ -28,7 +27,7 @@ export const ListForm = () => {
     return(
         <div className = 'main-layout'>
             <div className = 'header'>
-                <label>{user&&user.username}</label>
+                <label>{user&&user.username}</label>&nbsp;
                 <button onClick = {logout}>Logout</button>
             </div>
         </div>

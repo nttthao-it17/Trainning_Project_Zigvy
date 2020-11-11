@@ -1,22 +1,20 @@
 import { Meteor } from 'meteor/meteor';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import 'antd/dist/antd.css';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Redirect, useHistory, withRouter } from 'react-router-dom';
+import { Redirect, useHistory, withRouter, Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // React.useEffect(() =>{
-    //     if(Meteor.userId()){
-    //         history.push("/app")
-    //     }
-    // },[])
     const history = useHistory();
 
     const submit = () => {
-        Meteor.loginWithPassword(username, password)
+       Meteor.loginWithPassword(username, password, (err) =>{
+           if(err) alert('Invalid account!')
+       })
     };
       
     const currentUserId = useTracker(() =>{
@@ -72,6 +70,7 @@ const LoginForm = () => {
                 <Button type="button" htmlType="submit" className="login-form-button">
                 Log in
                 </Button>
+                <div>Or <Link to='/register'>register now</Link></div>
             </Form.Item>
         </Form>
     );

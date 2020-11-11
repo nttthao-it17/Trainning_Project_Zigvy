@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
-GroundCollection = new Mongo.Collection('ground')
+GroundCollection = new Mongo.Collection()
 //schema attach to collection
 GroundCollection.schema = new SimpleSchema({
     groundName: String,
@@ -13,3 +13,4 @@ GroundCollection.schema = new SimpleSchema({
     description: String,
     voteStar: Number
 })
+export default GroundCollection;

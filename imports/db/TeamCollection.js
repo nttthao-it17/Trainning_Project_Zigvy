@@ -1,7 +1,7 @@
 import {Mongo} from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 
-TeamCollection = new Mongo.Collection('team');
+TeamCollection = new Mongo.Collection();
 
 TeamCollection.schema = new SimpleSchema({
     logo: String,
@@ -9,3 +9,4 @@ TeamCollection.schema = new SimpleSchema({
     teamNumber: Number,
     // leaderID: //=> userID
 })
+export default TeamCollection;

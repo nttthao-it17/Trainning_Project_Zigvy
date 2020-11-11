@@ -1,6 +1,8 @@
 import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
-import '/imports/db/UsersSchema';
+// import '/imports/db/UsersSchema';
+import UsersCollection from '../imports/db/UsersCollection';
+import '../imports/api'; //import method cho server
 
 //Khởi tạo users
 const userData = [{
