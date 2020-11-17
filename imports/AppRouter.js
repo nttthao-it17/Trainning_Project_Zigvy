@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
-import {BrowserRouter as Router,Route, Link, Switch, useHistory, Redirect} from "react-router-dom";
+import { Route, Switch, useHistory, Redirect } from "react-router-dom";
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 
-import { HomePage }from "./ui/HomePage";
+import { HomePage } from "./ui/HomePage";
 import UserListPage from "./ui/UserListPage";
 import MyInfoPage from "./ui/MyInfoPage";
-import { ListForm }from "./ui/ListForm";
 import UserIDPage from "./ui/UserIDPage";
 import ChildrenPage from './ui/ChildrenPage';
-import SearchBar from './ui/Layout/SearchBar';
+import Header from './ui/Layout/Header';
+import Footer from './ui/Layout/Footer';
 
-
-export default () =>{
+export default () => {
     // const history = useHistory();
     // useEffect(() =>{
     //     if(!Meteor.userId()){
@@ -20,7 +19,7 @@ export default () =>{
     //     }
     // },[])
 
-    const currentUserId = useTracker(() =>{
+    const currentUserId = useTracker(() => {
         const currentUserId = Meteor.userId();
         return currentUserId;
     })
@@ -28,20 +27,11 @@ export default () =>{
     if (!currentUserId) {
         return <Redirect to="/login" />
     }
-    return(
+    return (
         <>
-            <div className="router-body">
-                <div className="link-body">
-                    <Link to="/app">FIND MATCH</Link>
-                    <Link to="/app/grounds">GROUNDS</Link>
-                    <Link to="/app/messages">MESSAGES</Link>
-                    <Link to="/app/upcoming">UPCOMING</Link>
-                    <Link to='/app/children-page'>Children Page</Link>
-                    <SearchBar/>
-                    <ListForm />
-                </div>
-                
-                {/* <div style={{minWidth: '300px', minHeight: '150px'}}> */}
+            <div className="router-body" >
+                <Header />
+                <div style={{ minHeight: 'inherit' }}>
                     <Switch>
                         <Route exact path="/app">
                             <HomePage />
@@ -56,13 +46,14 @@ export default () =>{
                             <UserListPage />
                         </Route>
                         <Route exact path="/app/children-page">
-                            <ChildrenPage/>
+                            <ChildrenPage />
                         </Route>
 
                         {/* tương tự default trong switch case, đường dẫn không đúng mặc định trở về trang /app */}
                         <Redirect to="/app" />
                     </Switch>
-                {/* </div> */}
+                </div>
+                <Footer />
             </div>
         </>
     )

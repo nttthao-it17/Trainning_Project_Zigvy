@@ -1,24 +1,24 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import HeaderPage from './Layout/PageHeader';
-import Footer from './Layout/Footer';
+import PageHeader from './Layout/PageHeader';
 
 const { Content } = Layout;
 
-const ChildrenPage = () =>{
-    return(
-        <div>
-            <HeaderPage/>
-            <Content style={{minHeight: '365px', margin: '0 50px'}}>
-                <div>welcommmmmmmmmmmm</div>
-                <div>welcommmmmmmmmmmm</div>
-                <div>welcommmmmmmmmmmm</div>
-                <div>welcommmmmmmmmmmm</div>
-                <div>welcommmmmmmmmmmm</div>
+const ChildrenPage = () => {
+    return (
+        <>
+            <PageHeader title={"Ground Info"} showBack={true} />
+            <Content>
+                <div style={{padding: '0 50px'}}>
+                    <div>welcommmmmmmmmmmm</div>
+                    <div>welcommmmmmmmmmmm</div>
+                    <div>welcommmmmmmmmmmm</div>
+                    <div>welcommmmmmmmmmmm</div>
+                    <div>welcommmmmmmmmmmm</div>
+                </div>
             </Content>
-            <Footer/>
-        </div>
+        </>
     )
 }
 

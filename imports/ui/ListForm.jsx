@@ -15,7 +15,7 @@ import { UserOutlined, CaretDownOutlined } from '@ant-design/icons';
 //     }
 // }
 
-export const ListForm = () => {
+const ListForm = () => {
     const user = useTracker(() => Meteor.user());
     const history = useHistory();
 
@@ -44,3 +44,5 @@ export const ListForm = () => {
         </div>
     );
 }
+
+export default ListForm;

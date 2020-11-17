@@ -55,8 +55,8 @@ h1{
   display: flex;
   width: 45%;
   justify-content: flex-end;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .header{
@@ -68,6 +68,7 @@ h1{
 /* App Router */
 .router-body{
   width: 100%;
+  min-height: 450px;
 }
 
 .link-body a {
@@ -85,7 +86,7 @@ h1{
   background-color: black;
   text-align: center;
   display: flex;
-  height: 42px;
+  line-height: 44px;
 }
 
 /* Registration Form */
@@ -127,3 +128,5 @@ h1{
 .line-icon span{
   width: 30px;
 }
+
+/* Anywhere */

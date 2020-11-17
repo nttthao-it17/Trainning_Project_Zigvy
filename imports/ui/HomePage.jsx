@@ -8,10 +8,6 @@ export const HomePage = () =>{
             <h1>Welcome back!!!</h1>
             <h1>Welcome back!!!</h1>
             <h1>Welcome back!!!</h1>
-            <h1>Welcome back!!!</h1>
-            <h1>Welcome back!!!</h1>
-            <h1>Welcome back!!!</h1>
-            <h1>Welcome back!!!</h1>
         </div>
     );
 }

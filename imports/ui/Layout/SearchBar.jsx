@@ -8,7 +8,7 @@ const SearchBar = () =>{
         <Input 
             placeholder='Search ground, team or someone' 
             prefix={< SearchOutlined style={{width: '30px'}}/>}
-            style={{width: '300px', margin: '0', marginTop: '5px', padding: '0 10px', borderRadius: '6px', height: '33px'}}
+            style={{width: '300px', margin: '15px 0', padding: '0 10px', borderRadius: '6px', height: '33px'}}
         />
     )
 }
