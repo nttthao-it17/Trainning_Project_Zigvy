@@ -1,13 +1,12 @@
 import React from 'react';
-import LoginRouter from "../LoginRouter";
-import RegistrationForm from './RegistrationForm';
+import LoginRouter from "../Router/LoginRouter";
 
 export const App = () => {
 
-  return(
-  <div className="container-app">
-    <LoginRouter/>
-    {/* <RegistrationForm/> */}
-  </div>
-  );
+    return (
+        <div className="container-app">
+            <LoginRouter/>
+
+        </div>
+    );
 };

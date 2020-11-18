@@ -1,19 +1,17 @@
 import React from 'react';
-import 'antd/dist/antd.css';
 import {
     Form,
     Input,
     Select,
     Button,
-    // AutoComplete,
 } from 'antd';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base'
 import {Link} from 'react-router-dom';
 
+import { FormItemStyled } from './styled';
 
 const { Option } = Select;
-// const AutoCompleteOption = AutoComplete.Option;
 
 const formItemLayout = {
     labelCol: {
@@ -45,8 +43,6 @@ const tailFormItemLayout = {
         },
     },
 };
-
-
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
@@ -94,6 +90,7 @@ const RegistrationForm = () => {
             {...formItemLayout}
             form={form}
             name="register"
+            className='form-container'
             onFinish={onFinish}
             initialValues={{
                 prefix: '84',
@@ -101,7 +98,7 @@ const RegistrationForm = () => {
             scrollToFirstError
         >
             <h1>Registration</h1>
-            <Form.Item
+            <FormItemStyled
                 name="username"
                 label={
                     <span>
@@ -117,9 +114,9 @@ const RegistrationForm = () => {
                 ]}
             >
                 <Input/>
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item
+            <FormItemStyled
                 name="email"
                 label="E-mail"
                 rules={[
@@ -134,9 +131,9 @@ const RegistrationForm = () => {
                 ]}
             >
                 <Input/>
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item
+            <FormItemStyled
                 name="password"
                 label="Password"
                 rules={[
@@ -148,9 +145,9 @@ const RegistrationForm = () => {
                 hasFeedback
             >
                 <Input.Password />
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item
+            <FormItemStyled
                 name="confirm"
                 label="Confirm Password"
                 dependencies={['password']}
@@ -171,9 +168,9 @@ const RegistrationForm = () => {
                 ]}
             >
                 <Input.Password />
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item
+            <FormItemStyled
                 name="fullname"
                 label={
                     <span>
@@ -189,9 +186,9 @@ const RegistrationForm = () => {
                 ]}
             >
                 <Input />
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item
+            <FormItemStyled
                 name="phone"
                 label="Phone Number"
                 rules={[
@@ -207,9 +204,9 @@ const RegistrationForm = () => {
                         width: '100%',
                     }}
                 />
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item
+            <FormItemStyled
                 name="userRole"
                 label="Kind of User"
                 rules={[
@@ -223,14 +220,14 @@ const RegistrationForm = () => {
                     <Option value="player">Player/Leader</Option>
                     <Option value="owner">Owner</Option>
                 </Select>
-            </Form.Item>
+            </FormItemStyled>
 
-            <Form.Item {...tailFormItemLayout}>
+            <FormItemStyled {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit">
                     Register
                 </Button>
                 <div>Or <Link to='/login'>login now!</Link></div>
-            </Form.Item>
+            </FormItemStyled>
         </Form>
     );
 };
