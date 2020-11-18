@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginRouter from "../LoginRouter";
+import LoginRouter from "../Router/LoginRouter";
 
 export const App = () => {
 
@@ -7,9 +7,6 @@ export const App = () => {
         <div className="container-app">
             <LoginRouter/>
 
-
-            {/* <HeaderPage/> */}
-            {/* <AppChildrenPage /> */}
         </div>
     );
 };

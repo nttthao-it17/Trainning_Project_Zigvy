@@ -1,19 +1,19 @@
 import React from 'react';
-import 'antd/dist/antd.css';
-import { 
+import {
     FacebookOutlined,
     TwitterOutlined,
     InstagramOutlined,
-    CopyrightOutlined    
+    CopyrightOutlined
 } from '@ant-design/icons';
 import { Layout } from 'antd';
 
-const { Footer } = Layout;
+import { FooterStyled, LayoutStyled } from './styled';
 
-const FooterComponent = () =>{
-        return(
-            <Layout>
-                <Footer style={{fontSize: '15px'}}>
+const FooterComponent = () => {
+    return (
+        <Layout>
+            <FooterStyled>
+                <LayoutStyled>
                     <div className='line-top'>
                         <div className='menu-footer'>
                             <div>Logo Imnage</div>
@@ -31,10 +31,12 @@ const FooterComponent = () =>{
                     <div className='line-bottom'>
                         <CopyrightOutlined />2017 Zigvy Inc.
                     </div>
-                </Footer>
-            </Layout>
-        )
-    
+                </LayoutStyled>
+
+            </FooterStyled>
+        </Layout>
+    )
+
 }
 
 export default FooterComponent;

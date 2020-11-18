@@ -1,7 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-// import { ArrowLeftOutlined } from '@ant-design/icons';
-import { PageHeader  } from 'antd';
+import { PageHeaderStyled } from './styled';
 
 const PageHeaderComponent = (props) =>{
     const addtionalProps = {};
@@ -15,10 +14,9 @@ const PageHeaderComponent = (props) =>{
     }
     
     return(
-        <PageHeader 
+        <PageHeaderStyled 
             ghost={false}
             className='site-page-header' 
-            style={{padding: '16px 50px'}}
             title={props.title}
             {...addtionalProps}
         />
