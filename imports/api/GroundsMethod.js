@@ -12,8 +12,6 @@ Meteor.methods({
             pricePerHour: Number,
             minMinutesUnit: Number,
             address: String,
-            lat: Number,
-            lng: Number,
             description: String,
         });
         console.log('goi duoc check')
@@ -27,8 +25,6 @@ Meteor.methods({
             pricePerHour: groundData.pricePerHour,
             minMinutesUnit: groundData.minMinutesUnit,
             address: groundData.address,
-            lat: groundData.lat,
-            lng: groundData.lng,
             description: groundData.description,
             
             userId: this.userId,

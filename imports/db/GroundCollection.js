@@ -9,8 +9,6 @@ GroundCollection.schema = new SimpleSchema({
     pricePerHour: Number,
     minMinutesUnit: Number,
     address: String,
-    lat: Number,
-    lng: Number,
     description: String,
     // voteStar: Number
 })
