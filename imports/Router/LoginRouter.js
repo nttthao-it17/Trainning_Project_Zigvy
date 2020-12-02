@@ -1,9 +1,9 @@
 import React from "react";
 import {BrowserRouter as Router,Redirect,Route, Switch} from "react-router-dom";
 
-import LoginForm from "../ui/LoginForm/LoginForm";
+import LoginForm from "../ui/loginForm/LoginForm";
 import AppRouter from "./AppRouter";
-import RegistrationForm from '../ui/RegistrationForm/RegistrationForm';
+import RegistrationForm from '../ui/registrationForm/RegistrationForm';
 
 export default () => {
     return(

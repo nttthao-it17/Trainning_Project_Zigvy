@@ -2,7 +2,7 @@ import React from 'react';
 import { StyledContent } from './styled';
 import { Layout } from 'antd';
 
-import PageHeader from '../MainLayout/PageHeader/PageHeader';
+import PageHeader from '../mainLayout/pageHeader/PageHeader';
 
 const { Content } = Layout;
 

@@ -15,6 +15,6 @@ UsersCollection.schema = new SimpleSchema({
         blackbox: true
     }
 })
-const userSchema = UsersCollection.schema;
+// const userSchema = UsersCollection.schema;
 
 export default UsersCollection;
