@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginRouter from "../Router/LoginRouter";
+import LoginRouter from "../router/LoginRouter";
 
 export const App = () => {
 

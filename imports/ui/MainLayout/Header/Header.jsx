@@ -1,8 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import SearchBar from '../SearchBar/SearchBar';
-import ListForm from '../../UserLogout/ListForm';
+import SearchBar from '../searchBar/SearchBar';
+import ListForm from '../../userLogout/ListForm';
 import { HeaderStyled, LinkStyled } from './styled';
 
 const { Header } = Layout;

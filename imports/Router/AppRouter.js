@@ -3,14 +3,15 @@ import { Route, Switch, useHistory, Redirect } from "react-router-dom";
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 
+import { RouterStyled } from './AppRouterStyled';
 import { HomePage } from "../ui/HomePage";
 import UserListPage from "../ui/UserListPage";
-import MyInfoPage from "../ui/MyInfoPage";
+// import MyInfoPage from "../ui/grounds/MyInfoPage";
 import UserIDPage from "../ui/UserIDPage";
-import ChildrenPage from '../ui/ChildrenPage/ChildrenPage';
-import Header from '../ui/MainLayout/Header/Header';
-import Footer from '../ui/MainLayout/Footer/Footer';
-import { RouterStyled } from './AppRouterStyled';
+import ChildrenPage from '../ui/childrenPage/ChildrenPage';
+import Header from '../ui/mainLayout/header/Header';
+import Footer from '../ui/mainLayout/footer/Footer';
+import GroundsPage from '../ui/grounds/GroundsPage';
 
 export default () => {
     // const history = useHistory();
@@ -38,7 +39,7 @@ export default () => {
                             <HomePage />
                         </Route>
                         <Route exact path="/app/grounds">
-                            <MyInfoPage />
+                            <GroundsPage />
                         </Route>
                         <Route path="/app/messages">
                             <UserIDPage />
