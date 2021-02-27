@@ -7,8 +7,8 @@ import {
     EditButtonStyled,
     DeleteButtonStyled,
     TableStyled,
-} from './styled';
-import GroundCollection from '../../db/GroundCollection';
+} from '../styled';
+import GroundCollection from '../../../db/GroundCollection';
 import GroundForm from './GroundForm';
 
 const columns = [

@@ -18,7 +18,7 @@ const HeaderComponent = () => {
                         <LinkStyled to="/app/messages">MESSAGES</LinkStyled>
                         <LinkStyled to="/app/upcoming">UPCOMING</LinkStyled>
                         <LinkStyled to='/app/children-page'>Children Page</LinkStyled>
-                        <SearchBar />
+                        <SearchBar placeholder='Search ground, team or someone' />
                         <ListForm />
                     </div>
                 </HeaderStyled>

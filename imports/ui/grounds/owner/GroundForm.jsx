@@ -3,10 +3,10 @@ import { Form, Input } from 'antd';
 import 'antd/dist/antd.css';
 import PropTypes, { number } from 'prop-types';
 
-import { InputNumberStyled, FormButtonStyled } from './styled';
+import { InputNumberStyled, FormButtonStyled } from '../styled';
 import CustomUploadSingleImage from './UploadImages';
 import GoogleMapAddress from './GoogleMapAddress';
-import TimeAvailableForm from '../time_available/FormTimeAvailable';
+import TimeAvailableForm from '../../time_available/FormTimeAvailable';
 
 const GroundForm = (props) => {
     const {
@@ -40,6 +40,7 @@ const GroundForm = (props) => {
     useEffect(() => {
         setFile({ response: { url: record.imageGround } });
     }, [record.imageGround]);
+    // console.log('pic 42: ', record.imageGround);
 
     return (
         <Form

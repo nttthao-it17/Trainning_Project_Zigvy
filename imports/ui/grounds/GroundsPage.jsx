@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Modal, Form, notification } from 'antd';
 import 'antd/dist/antd.css';
 import { Meteor } from 'meteor/meteor';
@@ -7,9 +7,11 @@ import moment from 'moment';
 
 import PageHeader from '../mainLayout/pageHeader/PageHeader';
 import GroundCollection from '../../db/GroundCollection';
-import ShowListGrounds from './ShowListGrounds';
-import GroundForm from './GroundForm';
+import ShowListGrounds from './owner/ShowListGrounds';
+import GroundForm from './owner/GroundForm';
 import AvailableTime from '../../db/AvailableTime';
+import GroundPlayer from './player/GroundPlayer';
+import HeaderPlayer from './player/HeaderPlayer';
 
 const GroundsCollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     const [form] = Form.useForm();
@@ -49,24 +51,21 @@ const notificationShow = (type, message, description) => {
 }
 
 //subscribe available time
-const displayTimeData = () =>{
-    const isReadyTime = useTracker(() =>{
-        const sub = Meteor.subscribe('availableTime').ready();
-        return sub;
+const displayTimeData = () => {
+    const {isReadyTime, timeData} = useTracker(() => {
+        const isReadyTime = Meteor.subscribe('availableTime').ready();
+        const timeData = AvailableTime.find({}).fetch();
+        return {timeData};
     })
 
-    const timeData = useTracker(() =>{
-        const data = AvailableTime.find({}).fetch();
-        return data;
-    })
-
-    if(isReadyTime){
-        console.log('timeData: ', {timeData});
-    }
 }
 
 const GroundsPage = () => {
     const [visible, setVisible] = useState(false);
+    const [crrUser, setCrrUser] = useState(null);
+    const [keyword, setKeyword] = useState('');
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(300);
 
     const insertGround = (values) => {
         // console.log('insertGround')
@@ -82,7 +81,7 @@ const GroundsPage = () => {
     }
 
     const onCreate = (values) => {
-        console.log({values});
+        console.log({ values });
         console.log(values.availableTime);
         const test = values.availableTime.map(time => ({
             dayOfWeek: time.dayOfWeek,
@@ -99,24 +98,21 @@ const GroundsPage = () => {
         insertGround(values);
     };
 
-    const isReady = useTracker(() => {
-        const sub = Meteor.subscribe('grounds').ready();
-        // console.log('1',sub)
-        return sub;
+    const {isReady, groundsData, currentUser} = useTracker(() => {
+        const isReady = Meteor.subscribe('grounds').ready();
+        const groundsData = GroundCollection.find({}).fetch();
+        const currentUser = Meteor.user();
+        return {isReady, groundsData, currentUser };
     })
 
-    const groundsData = useTracker(() => {
-        const data = GroundCollection.find({}).fetch();
-        // console.log('2',data)
-        return data;
-    })
-
-    const currentUser = useTracker(() => {
-        const curUser = Meteor.user();
-        return curUser;
-    })
-    // console.log(isReady)
     displayTimeData();
+
+    useEffect(()=>{
+        if(isReady){
+            setCrrUser(currentUser.profile.userRole);
+            console.log(currentUser.profile.userRole);
+        }
+    }, [isReady]);
 
     const handleCreate = (values) => {
         if (isReady) {
@@ -135,7 +131,7 @@ const GroundsPage = () => {
         }
     }
 
-    return (
+    return crrUser === 'owner' ? (
         <div>
             <PageHeader title={"Ground"} showBack={false} />
             <Button
@@ -143,7 +139,7 @@ const GroundsPage = () => {
                 onClick={() => { setVisible(true); }}
             >
                 New Grounds
-            </Button>
+                </Button>
             <GroundsCollectionCreateForm
                 visible={visible}
                 onCreate={handleCreate}
@@ -151,6 +147,21 @@ const GroundsPage = () => {
             />
             <ShowListGrounds />
         </div>
+    ) : (
+        <>
+            <HeaderPlayer 
+                keyword={keyword} 
+                setKeyword={setKeyword} 
+                min={min} setMin={setMin}
+                max={max} setMax={setMax}
+                groundsData={groundsData}
+            />
+            <GroundPlayer
+                keyword={keyword}
+                min={min}
+                max={max}
+            />
+        </>
     );
 };
 
