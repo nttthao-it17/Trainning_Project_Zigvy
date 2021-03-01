@@ -5,3 +5,4 @@ import './ImageMethod';
 
 //publication
 import './publication/groundsPublication';
+import './publication/availableTimePublication';

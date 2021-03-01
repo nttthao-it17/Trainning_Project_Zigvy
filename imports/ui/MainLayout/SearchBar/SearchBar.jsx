@@ -1,10 +1,10 @@
 import React from 'react';
 import { InputStyled, SearchIcon } from './styled';
 
-const SearchBar = () =>{
+const SearchBar = (props) =>{
     return(
-        <InputStyled 
-            placeholder='Search ground, team or someone' 
+        <InputStyled
+            placeholder={props.placeholder} 
             prefix={< SearchIcon />}
         />
     )

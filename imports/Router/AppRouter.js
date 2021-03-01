@@ -1,26 +1,19 @@
-import React, { useEffect } from "react";
-import { Route, Switch, useHistory, Redirect } from "react-router-dom";
+import React from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 
 import { RouterStyled } from './AppRouterStyled';
 import { HomePage } from "../ui/HomePage";
 import UserListPage from "../ui/UserListPage";
-// import MyInfoPage from "../ui/grounds/MyInfoPage";
 import UserIDPage from "../ui/UserIDPage";
 import ChildrenPage from '../ui/childrenPage/ChildrenPage';
 import Header from '../ui/mainLayout/header/Header';
 import Footer from '../ui/mainLayout/footer/Footer';
 import GroundsPage from '../ui/grounds/GroundsPage';
+import GroundInfo from '../ui/grounds/player/GroundInfo';
 
 export default () => {
-    // const history = useHistory();
-    // useEffect(() =>{
-    //     if(!Meteor.userId()){
-    //         history.push("/login")
-    //     }
-    // },[])
-
     const currentUserId = useTracker(() => {
         const currentUserId = Meteor.userId();
         return currentUserId;
@@ -40,6 +33,9 @@ export default () => {
                         </Route>
                         <Route exact path="/app/grounds">
                             <GroundsPage />
+                        </Route>
+                        <Route exact path="/app/grounds/ground-info/:id">
+                            <GroundInfo />
                         </Route>
                         <Route path="/app/messages">
                             <UserIDPage />

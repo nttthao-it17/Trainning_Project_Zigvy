@@ -6,7 +6,7 @@ import {
     GoogleMap,
     Marker,
 } from "react-google-maps";
-import Geocode from 'react-geocode';
+// import Geocode from 'react-geocode';
 // import Autocomplete from 'react-google-autocomplete';
 
 // Geocode.setApiKey('AIzaSyBU_LEp0t3dmV1UsmEdM3gJN309J2pDlgg')

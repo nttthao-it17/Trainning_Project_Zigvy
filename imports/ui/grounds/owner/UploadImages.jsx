@@ -34,12 +34,12 @@ class CustomUploadSingleImage extends React.Component {
                 loading: false,
             }))
         }
-        onChangeFile(info ? info.file : null);
+        onChangeFile(info ? info.file : null); // nơi nhận props
+        // console.log('info: ', {info});
     };
 
     customRequest = async ({ file, onError, onProgress, onSuccess }) => {
         var base64Data = await toBase64(file);
-        // const base64Data = base64.encode(file);
         Meteor.call('uploadFile', base64Data, (error, uploadedUrl) => {
             if (!error) {
                 onSuccess(uploadedUrl);
@@ -51,9 +51,13 @@ class CustomUploadSingleImage extends React.Component {
 
     render() {
         const { loading } = this.state;
-        const { val } = this.props;
+        const { val, URL } = this.props;
         const value = val || null;
-
+        // val = {
+        //     response: {
+        //         url: 'asdf'
+        //     }
+        // }
         const uploadButton = () => (
             <div>
                 <Icon type={loading ? 'loading' : 'plus'} />
@@ -61,7 +65,9 @@ class CustomUploadSingleImage extends React.Component {
             </div>
         );
 
-        const imageUrl = _get(this.state, 'imageUrl') || _get(value, 'response.url');
+        const imageUrl = _get(this.state, 'imageUrl') || _get(value, 'response.url') || URL
+        // console.log('imageUrl: ', this.state); //local url
+        // console.log('imageUrl value: ', value); //cloudinary url
 
         return (
             <Upload
