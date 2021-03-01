@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback } from 'react';
 import { Input, Space, Select, Slider, Popover, Button } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import _debounce from 'lodash/debounce';
@@ -68,9 +68,9 @@ const HeaderPlayer = (props) => {
     }
 
     //Thực hiện set value cho keyword thay vì tại onChange của Search
-    const handleActiveDelay = _debounce((value) =>{
+    const handleActiveDelay = useCallback(_debounce((value) =>{
         setKeyword(value);
-    }, 500)
+    }, 500), [setKeyword]);
 
     return (
         <DivStyled>

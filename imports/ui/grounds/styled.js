@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import 'antd/dist/antd.css';
 import { InputNumber, Table, Button, Card } from 'antd';
-import { EditOutlined, DeleteOutlined, StarOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 export const InputNumberStyled = styled(InputNumber)`
     width: 100%;
@@ -66,5 +66,7 @@ export const ButtonStyledGroundInfo = styled(Button)`
             color: white;
         }
     }
-    
+`
+export const TitleOfGround = styled.h2`
+    font-size: 30px;
 `

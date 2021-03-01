@@ -40,7 +40,7 @@ const GroundPlayer = (props) => {
         });
         query.$and.push(queryByKeyword);
     }
-    
+
     const { groundData } = useTracker(() => {
         const sub = Meteor.subscribe('groundGetAll').ready();
         const groundData = GroundCollection.find(query).fetch();
@@ -69,7 +69,10 @@ const GroundPlayer = (props) => {
                     }}
                     dataSource={groundData}
                     renderItem={item => {
-                        const calc = (item.pricePerHour * (item.minMinutesUnit / 60)).toFixed(2);
+                        /*Tính giá tiền trong tgian tối thiểu (minMinuteUnit) để tính giá tiền sân
+                        trong khoảng tgian custom */
+                        // const calc = (item.pricePerHour * (item.minMinutesUnit / 60)).toFixed(2);
+                        const fixPrice = (item.pricePerHour).toFixed(2);
 
                         return (
                             <List.Item>
@@ -86,7 +89,8 @@ const GroundPlayer = (props) => {
                                                 title={item.groundName}
                                                 description={item.address}
                                             />
-                                            <FeeGroundStyled >{`$${calc}`}</FeeGroundStyled>
+                                            <FeeGroundStyled >{`$${fixPrice}`}</FeeGroundStyled><br/>
+                                            /hour
                                         </div>
                                     </DivStyled>
                                 </CardStyled>

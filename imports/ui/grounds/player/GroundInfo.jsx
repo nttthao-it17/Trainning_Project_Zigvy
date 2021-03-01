@@ -5,7 +5,7 @@ import { Card, Avatar } from 'antd';
 import { UserOutlined, StarOutlined, ShareAltOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 
-import { ButtonStyledGroundInfo } from "../styled";
+import { ButtonStyledGroundInfo, TitleOfGround, FeeGroundStyled } from "../styled";
 import PageHeader from '../../mainLayout/pageHeader/PageHeader';
 import GroundCollection from "../../../db/GroundCollection";
 import AvailableTime from '../../../db/AvailableTime';
@@ -18,10 +18,10 @@ const GroundInfo = () => {
         const groundInfoById = GroundCollection.findOne({ _id: id });
 
         const subAvailableTime = Meteor.subscribe('availableTime').ready();
-        const availableTimeData = AvailableTime.findOne({groundId: id});
+        const availableTimeData = AvailableTime.findOne({ groundId: id });
         return { groundInfoById, availableTimeData };
     }, [id]);
-    const availableTime = ((availableTimeData.timeAvailableTo - availableTimeData.timeAvailableFrom)/60).toFixed(0);
+    const availableTime = ((availableTimeData.timeAvailableTo - availableTimeData.timeAvailableFrom) / 60).toFixed(0);
 
     return (
         <>
@@ -32,23 +32,17 @@ const GroundInfo = () => {
             >
                 <div
                     className='imgLayout'
-                    style={{ width: '50%', paddingRight: '10px' }}
+                    style={{ width: '65%', paddingRight: '30px' }}
                 >
                     <img src={groundInfoById.imageGround} style={{ width: '100%' }} />
                 </div>
                 <div
                     className='bottomLayout'
-                    style={{ width: '40%' }}
+                    style={{ width: '35%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
                 >
-
-                    <Card bordered={false} style={{ borderBottom: '1px solid darkgrey' }}>
-                        <Meta
-                            title={groundInfoById.groundName}
-                            description={groundInfoById.address}
-                        />
-                    </Card>
-
-                    <Card bordered={false} >
+                    <TitleOfGround>{groundInfoById.groundName}</TitleOfGround>
+                    <p>{groundInfoById.address}</p>
+                    <Card bordered={false} style={{ borderTop: '1px solid darkgrey' }}>
                         <Meta
                             avatar={
                                 <Avatar icon={<UserOutlined />} />
@@ -56,22 +50,20 @@ const GroundInfo = () => {
                             title='first name'
                             description='owner-player'
                         />
-                        <br />
-                        <p>{groundInfoById.description}</p>
-                        <h2 style={{ color: 'green' }}>{`$${groundInfoById.pricePerHour}.00`}
-                            <span style={{ color: 'gray', fontSize: '16px' }}> /hr</span>
-                        </h2>
-
-                        <div>
-                            <ButtonStyledGroundInfo size='large' >BOOK NOW</ButtonStyledGroundInfo>
-                            <ButtonStyledGroundInfo size='large' icon={<StarOutlined className='startIcon' />} >Favorite</ButtonStyledGroundInfo>
-                            <ButtonStyledGroundInfo size='large' icon={<ShareAltOutlined className='shareIcon' />}>Share</ButtonStyledGroundInfo>
-                        </div>
-                        <h2 style={{color: 'green'}}><strong>{availableTime}</strong> 
-                            <span> hours Available </span>
-                        </h2>
-
                     </Card>
+                    <p>{groundInfoById.description}</p>
+                    <FeeGroundStyled >{`$${groundInfoById.pricePerHour}.00`}
+                        <span style={{ color: 'gray', fontSize: '16px' }}> /hr</span>
+                    </FeeGroundStyled>
+
+                    <div>
+                        <ButtonStyledGroundInfo size='large' >BOOK NOW</ButtonStyledGroundInfo>
+                        <ButtonStyledGroundInfo size='large' icon={<StarOutlined className='startIcon' />} >Favorite</ButtonStyledGroundInfo>
+                        <ButtonStyledGroundInfo size='large' icon={<ShareAltOutlined className='shareIcon' />}>Share</ButtonStyledGroundInfo>
+                    </div>
+                    <h2 style={{ color: 'green' }}><strong>{availableTime}</strong>
+                        <span> hours Available </span>
+                    </h2>
                 </div>
             </div>
         </>
